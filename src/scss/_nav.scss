@@ -1,0 +1,22 @@
+#navbar {
+  position: sticky;
+  color: $main-color;
+
+  & img {
+    width: 5rem;
+  }
+
+  & ul li {
+    list-style: none;
+    padding: 0.5rem;
+    letter-spacing: 0.1rem;
+
+    & a {
+      color: $main-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

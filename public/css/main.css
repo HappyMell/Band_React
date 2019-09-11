@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+.main {
+  display: grid;
+  margin-top: 15px;
+  margin-left: 15px;
+  grid-template-areas: "nav" "news";
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto; }
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.4;
+  text-transform: uppercase; }
+
+a {
+  text-decoration: none; }
+
+p {
+  margin: 0.75rem 0; }
+
+#navbar {
+  position: sticky;
+  color: #000000; }
+  #navbar img {
+    width: 5rem; }
+  #navbar ul li {
+    list-style: none;
+    padding: 0.5rem;
+    letter-spacing: 0.1rem; }
+    #navbar ul li a {
+      color: #000000; }
+      #navbar ul li a:hover {
+        color: #dbdbdb; }
