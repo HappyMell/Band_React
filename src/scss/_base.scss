@@ -32,3 +32,11 @@ a {
 p {
   margin: 0.75rem 0;
 }
+
+.btn {
+  padding: 0 !important;
+  font-size: 1.4rem !important;
+  color: $primary-color !important;
+  width: 3rem !important;
+  margin-top: -5px !important;
+}

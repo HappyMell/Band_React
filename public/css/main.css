@@ -23,8 +23,15 @@ a {
 p {
   margin: 0.75rem 0; }
 
+.btn {
+  padding: 0 !important;
+  font-size: 1.4rem !important;
+  color: #dbdbdb !important;
+  width: 3rem !important;
+  margin-top: -5px !important; }
+
 #navbar {
-  position: sticky;
+  position: fixed;
   color: #000000; }
   #navbar img {
     width: 5rem; }
@@ -36,3 +43,18 @@ p {
       color: #000000; }
       #navbar ul li a:hover {
         color: #dbdbdb; }
+
+.news {
+  margin-top: 4rem; }
+  .news .news_info .card {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.125); }
+  .news .news_info .card-header {
+    display: flex;
+    background-color: #fff;
+    border-bottom: none;
+    margin-bottom: -20px !important; }
+    .news .news_info .card-header p {
+      margin-bottom: 0; }
+  .news .news_info img {
+    width: 100%; }
