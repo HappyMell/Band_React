@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import firebase from "../firebase";
-import Fade from "react-reveal/Fade";
 import { Accordion, Card, Button } from "react-bootstrap";
-
+import scrollToComponent from "react-scroll-to-component";
 class News extends Component {
   state = {
-    news: []
+    news: [],
+    scrollNews: {}
   };
 
   componentDidMount() {
@@ -28,28 +28,45 @@ class News extends Component {
     });
   }
 
+  scrollToTop = () => {
+    let scroller = scrollToComponent(this.scrollNews, {
+      offset: 0,
+      align: "top",
+      duration: 1000,
+      ease: "inExpo"
+    });
+
+    scroller.on("end", () => console.log("Scrolling End!"));
+  };
   render() {
     return (
       <div className='news'>
         {this.state.news.map((newbie, index) => {
           return (
-            <div key={index} className='news_info'>
-              <Accordion defaultActiveKey='0'>
+            <div
+              key={index}
+              className='news_info'
+              ref={el => (this.scrollNews[el.id] = el)}
+            >
+              <Accordion defaultActiveKey={index}>
                 <Card>
-                  <Fade bottom>
-                    <Card.Header>
-                      <p>{newbie.title}</p>
-                      <Accordion.Toggle as={Button} variant='link' eventKey='0'>
-                        +
-                      </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey='0'>
-                      <Card.Body>
-                        <img src={newbie.image} />
-                        <p>{newbie.details}</p>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Fade>
+                  <Card.Header>
+                    <p>{newbie.title}</p>
+                    <Accordion.Toggle
+                      as={Button}
+                      variant='link'
+                      eventKey={index}
+                      onClick={this.scrollToTop}
+                    >
+                      +
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey={index}>
+                    <Card.Body>
+                      <img src={newbie.image} />
+                      <p>{newbie.details}</p>
+                    </Card.Body>
+                  </Accordion.Collapse>
                 </Card>
               </Accordion>
             </div>
