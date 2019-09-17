@@ -30,53 +30,43 @@ export class discography extends Component {
     });
   }
 
-  scrollToTop = index => {
-    let scroller = scrollToComponent(this["section-" + index], {
-      offset: 0,
-      align: "top",
-      duration: 1000,
-      ease: "inExpo"
-    });
-
-    scroller.on("end", () => console.log("Scrolling End!"));
-  };
   render() {
     return (
       <div className='news'>
-        {this.state.discography.map((disco, index) => {
-          return (
-            <div key={index} className='news_info'>
-              <Accordion defaultActiveKey={index}>
-                <Card>
-                  <Card.Header>
-                    <p>Albums</p>
-                    <Accordion.Toggle
-                      as={Button}
-                      variant='link'
-                      eventKey={index}
-                      onClick={() => this.scrollToTop(index)}
-                    >
-                      +
-                    </Accordion.Toggle>
-                  </Card.Header>
-                  <Accordion.Collapse
-                    eventKey={index}
-                    ref={section => {
-                      this["section-" + index] = section;
-                    }}
-                  >
-                    <Card.Body>
-                      <ScrollAnimation animateIn='fadeIn'>
-                        <img src={disco.image} />
-                        <p>{disco.details}</p>
-                      </ScrollAnimation>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-            </div>
-          );
-        })}
+        <div className='news_info'>
+          <Accordion defaultActiveKey='0'>
+            <Card>
+              <Card.Header>
+                <p>Albums</p>
+                <Accordion.Toggle as={Button} variant='link' eventKey='0'>
+                  +
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey='0'>
+                <Card.Body>
+                  <div class='items'>
+                    {this.state.discography.map((disco, index) => {
+                      return (
+                        <ScrollAnimation animateIn='fadeIn'>
+                          <div class='item'>
+                            <div class='item-image'>
+                              <img src={disco.image} alt='' />
+                            </div>
+                            <div class='item-text'>
+                              <div class='item-text-wrap'>
+                                <h2 class='item-text-title'>{disco.title}</h2>
+                              </div>
+                            </div>
+                          </div>
+                        </ScrollAnimation>
+                      );
+                    })}
+                  </div>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </div>
       </div>
     );
   }
