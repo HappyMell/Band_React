@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import firebase from "../firebase";
-import { Accordion, Card, Button } from "react-bootstrap";
-import scrollToComponent from "react-scroll-to-component";
-import ScrollAnimation from "react-animate-on-scroll";
+import { Accordion, Card, Button, Container } from "react-bootstrap";
 
 export class discography extends Component {
   state = {
-    discography: [],
-    scrollNews: {}
+    discography: []
   };
 
   componentDidMount() {
@@ -47,18 +44,36 @@ export class discography extends Component {
                   <div class='items'>
                     {this.state.discography.map((disco, index) => {
                       return (
-                        <ScrollAnimation animateIn='fadeIn'>
-                          <div class='item'>
-                            <div class='item-image'>
-                              <img src={disco.image} alt='' />
-                            </div>
-                            <div class='item-text'>
-                              <div class='item-text-wrap'>
-                                <h2 class='item-text-title'>{disco.title}</h2>
+                        <div>
+                          <Accordion key={index}>
+                            <Card>
+                              <div class='item' key={index}>
+                                <div class='item-image'>
+                                  <img src={disco.image} alt='' />
+                                </div>
+
+                                <div class='item-text'>
+                                  <div class='item-text-wrap'>
+                                    <Accordion.Toggle eventKey='1'>
+                                      <h2 class='item-text-title'>
+                                        {disco.title}
+                                      </h2>
+                                    </Accordion.Toggle>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                          </div>
-                        </ScrollAnimation>
+                            </Card>
+                            <Accordion.Collapse eventKey='1'>
+                              <Container>
+                                <div className='information'>
+                                  <p>{disco.title}</p>
+                                  <p>{disco.details}</p>
+                                  <img src={disco.image} />
+                                </div>
+                              </Container>
+                            </Accordion.Collapse>
+                          </Accordion>
+                        </div>
                       );
                     })}
                   </div>

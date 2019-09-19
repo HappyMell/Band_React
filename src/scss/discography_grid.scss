@@ -1,19 +1,18 @@
 .items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  grid-gap: 2rem;
 }
 
 .item {
   position: relative;
-  background-color: $main-color;
   overflow: hidden;
 
   &:after {
     content: "";
     position: absolute;
     display: block;
-    background-color: inherit;
+    background-color: black;
     opacity: 0.9;
     top: 0;
     left: 0;
@@ -52,7 +51,7 @@
   &-image:before {
     content: "";
     display: block;
-    padding-top: 75%;
+    padding-top: 66%;
     overflow: hidden;
   }
 
@@ -86,6 +85,12 @@
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
+
+    & button {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+    }
   }
 
   &-text-title {
